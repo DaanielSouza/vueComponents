@@ -1,15 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <!-- <local-component :title="title" @addClick="count++"></local-component> -->
+  <local-component :title="title" @addClick="count  += $event">
+  <!-- Slot Test -->
+  <template v-slot:header>
+    Slot Header
+  </template>
+  <template v-slot:content>
+    Slot Content
+  </template>
+  </local-component>
+  <global-component></global-component>
+  <p>{{  count  }}</p>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import LocalComponent from './components/LocalComponent.vue';
 export default {
-  name: 'App',
+  data() {
+    return {
+      title: "Teste",
+      count: 0,
+    }
+  },
+  methods: {
+
+  },
   components: {
-    HelloWorld
+    LocalComponent
   }
 }
 </script>
